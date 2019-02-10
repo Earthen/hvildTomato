@@ -1,12 +1,32 @@
-#include "hvildtomato.h"
 #include <QApplication>
+#include <QWidget>
+#include <QFrame>
+#include <QGridLayout>
+#include <QSystemTrayIcon>
 
-int main(int argc, char *argv[])
-{
-    QApplication app(argc, argv);
-    HvildTomato w;
-    w.show();
+class HvildQWidget : public QWidget {
 
-    return app.exec();
+public:
+  HvildQWidget(QWidget *parent = 0);
+};
+
+HvildQWidget::HvildQWidget(QWidget *parent)
+  : QWidget(parent) {
+
+  QSystemTrayIcon *trayIcon;
+  trayIcon = new QSystemTrayIcon(this);
+  trayIcon -> show();
+  
 }
 
+int main(int argc, char *argv[]) {
+
+  QApplication app(argc, argv);  
+    
+  HvildQWidget window;
+
+  window.resize(350, 150);
+  window.setWindowTitle("HvildQWidget");
+
+  return app.exec();
+}
