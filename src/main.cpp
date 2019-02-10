@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <QWidget>
-#include <QFrame>
-#include <QGridLayout>
+#include <QMenu>
+#include <QAction>
 #include <QSystemTrayIcon>
 
 class HvildQWidget : public QWidget {
@@ -13,8 +13,23 @@ public:
 HvildQWidget::HvildQWidget(QWidget *parent)
   : QWidget(parent) {
 
+  QAction *startAction;
+  QAction *quitAction;
+
+  startAction = new QAction(tr("&Start"));
+  quitAction = new QAction(tr("&Quit"));
+  connect(quitAction, &QAction::triggered, this, &QCoreApplication::quit);
+
+  QMenu *trayIconMenu;
+  trayIconMenu = new QMenu(this);
+  trayIconMenu -> addAction(startAction);
+  trayIconMenu -> addSeparator();
+  trayIconMenu -> addAction(quitAction);
+
+
   QSystemTrayIcon *trayIcon;
   trayIcon = new QSystemTrayIcon(this);
+  trayIcon -> setContextMenu(trayIconMenu);
   trayIcon -> show();
   
 }
