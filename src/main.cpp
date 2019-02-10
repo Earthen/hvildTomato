@@ -27,7 +27,7 @@ HvildQWidget::HvildQWidget(QWidget *parent)
   trayIconMenu -> addSeparator();
   trayIconMenu -> addAction(quitAction);
 
-  const QIcon icon = QIcon(":images/icon.png");
+  const QIcon icon = QIcon(":/resources/images/icon.png");
 
 
   QSystemTrayIcon *trayIcon;
