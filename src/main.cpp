@@ -3,6 +3,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QSystemTrayIcon>
+#include <QIcon>
 
 class HvildQWidget : public QWidget {
 
@@ -26,10 +27,13 @@ HvildQWidget::HvildQWidget(QWidget *parent)
   trayIconMenu -> addSeparator();
   trayIconMenu -> addAction(quitAction);
 
+  const QIcon icon = QIcon(":images/icon.png");
+
 
   QSystemTrayIcon *trayIcon;
   trayIcon = new QSystemTrayIcon(this);
   trayIcon -> setContextMenu(trayIconMenu);
+  trayIcon -> setIcon(icon);
   trayIcon -> show();
   
 }
