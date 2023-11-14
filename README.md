@@ -1,3 +1,5 @@
+#Archived#
+
 CMake Qt5 GUI Template
 ----------------------
 
